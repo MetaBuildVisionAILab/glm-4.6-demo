@@ -1,0 +1,9 @@
+<think>
+User asked me to observe the image and find the answer. Is there a worker wearing a high-visibility safety vest and a safety helmet? If so, answer that it is not a pedestrian. If there is a person walking on the road otherwise, say that they are a pedestrian. When you are done checking, provide the answer.
+
+Output JSON only:
+
+{
+  "pedestrian": "Yes|No|Uncertain",
+  "reason": "Korean"
+}

@@ -1,0 +1,44 @@
+accident_1.mp4
+{
+"accident": true,
+"incidents": [
+{
+"type": "차량간 사고",
+"frame": 7,
+"confidence": "high",
+"reasoning": "Orange car collides with silver van in frame 7, showing contact and debris"
+}
+]
+}
+
+accident_2.mp4
+{
+"accident": false,
+"reasoning": "No collision observed throughout the footage"
+}
+
+accident_3.mp4
+{
+"accident": true,
+"incidents": [
+{
+"type": "차량간 사고",
+"frame": 16,
+"confidence": "high",
+"reasoning": "Two white vehicles collide with each other in frame 16, showing contact and subsequent damage"
+}
+]
+}
+
+accident_4.mp4
+{
+"accident": true,
+"incidents": [
+{
+"type": "차량간 사고",
+"frame": 11,
+"confidence": "high",
+"reasoning": "A white car collides with a dark-colored car near the curb in frame 11, showing visible damage to the white car's front"
+}
+]
+}

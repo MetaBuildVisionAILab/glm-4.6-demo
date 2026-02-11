@@ -1,0 +1,25 @@
+Additional Task: PEDESTRIAN VERIFICATION
+
+The filename indicates a pedestrian-related event.
+You must determine whether visible people are normal pedestrians OR road workers.
+
+IMPORTANT:
+- If a person is wearing a high-visibility vest (fluorescent yellow/green/orange) OR a safety helmet,
+  classify them as a worker, not a pedestrian.
+- If people are near a stopped vehicle after an accident, classify as accident_related_people.
+
+Return JSON only:
+
+{
+  "pedestrian_present": "Yes|No|Uncertain",
+  "worker_present": "Yes|No|Uncertain",
+  "accident_related_people": "Yes|No|Uncertain",
+  "pedestrian_risk": "Low|Medium|High|Uncertain",
+  "confidence_pedestrian": 0.0,
+  "pedestrian_explanation": "Short Korean explanation"
+}
+
+Criteria:
+- pedestrian_present = people visible WITHOUT worker clothing.
+- worker_present = people wearing helmet or high-visibility vest.
+- pedestrian_risk = high if pedestrians are in an active lane or near moving vehicles.

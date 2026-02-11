@@ -1,0 +1,23 @@
+Additional Task: WRONG-WAY DRIVING VERIFICATION
+
+The filename indicates a possible wrong-way driving event.
+However, wrong-way appearance may be caused by:
+- accident-induced vehicle rotation
+- U-turn maneuver
+- camera angle confusion
+
+You must confirm whether wrong-way driving is actually occurring.
+
+Return JSON only:
+
+{
+  "wrongway_confirmed": "Yes|No|Uncertain",
+  "wrongway_reason": "intentional_wrongway|accident_rotation|u_turn|unclear",
+  "wrongway_risk": "Low|Medium|High|Uncertain",
+  "confidence_wrongway": 0.0,
+  "wrongway_explanation": "Short Korean explanation"
+}
+
+Rules:
+- If accident="Yes" and vehicle posture is abnormal, wrongway_reason may be accident_rotation.
+- wrongway_confirmed="Yes" only if vehicle is clearly driving opposite to traffic direction.

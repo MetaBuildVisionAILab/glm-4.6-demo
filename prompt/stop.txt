@@ -1,0 +1,22 @@
+Additional Task: STOP EVENT VERIFICATION
+
+The filename indicates this may be a STOP event video.
+However, stopping may be caused by normal traffic OR by an accident.
+
+You must verify whether the stop is abnormal and determine the stop type.
+
+Rules:
+- If accident="Yes" from system analysis, classify stop as accident_related_stop.
+- If accident="No", classify stop as normal_stop or suspicious_stop.
+- If stop is caused by red light or congestion across all lanes, it is normal_stop.
+- If only one vehicle stops abnormally in a lane or intersection, it is suspicious_stop.
+
+Return JSON only:
+
+{
+  "stop_confirmed": "Yes|No|Uncertain",
+  "stop_type": "normal_stop|suspicious_stop|accident_related_stop|unknown",
+  "stop_location_detail": "shoulder|middle_lane|intersection|crosswalk|roadside|unknown",
+  "confidence_stop": 0.0,
+  "stop_explanation": "Short Korean explanation"
+}

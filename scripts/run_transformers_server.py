@@ -151,14 +151,18 @@ app.add_middleware(
 
 def save_base64_to_temp_file(data_uri: str, prefix: str = "media_") -> str:
     """
-    Save base64 data URI to a temporary file and return the file path.
+    Convert base64 data URI to a temporary file for processing.
+    
+    Note: For images, we skip saving since the GUI already saved frames.
+    Only videos are saved as files (required by transformers processor).
     
     Args:
         data_uri: "data:video/mp4;base64,..." format URI
         prefix: Prefix for temp file name
         
     Returns:
-        Absolute path to the saved temp file
+        - For images: Returns the original data URI (processed in-memory by transformers)
+        - For videos: Absolute path to the saved temp file
     """
     # Parse data:video/mp4;base64,...
     header, base64_data = data_uri.split(",", 1)
@@ -179,12 +183,18 @@ def save_base64_to_temp_file(data_uri: str, prefix: str = "media_") -> str:
     }
     ext = ext_map.get(mime_type, ".bin")
     
-    # Generate unique filename and save
+    # For images: return original data URI (no file saving needed)
+    # Transformers processor can handle base64 data URIs directly
+    if mime_type.startswith("image/"):
+        print(f"[Image] Using in-memory base64 data (no file save)")
+        return data_uri
+    
+    # For videos: save to temp file (required for video processing)
     filename = f"{prefix}{uuid.uuid4().hex[:8]}{ext}"
     filepath = TEMP_DIR / filename
     filepath.write_bytes(base64.b64decode(base64_data))
     
-    print(f"Saved media to temp file: {filepath}")
+    print(f"Saved video to temp file: {filepath}")
     return str(filepath)
 
 

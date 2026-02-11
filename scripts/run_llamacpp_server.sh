@@ -17,7 +17,7 @@ MMPROJ_PATH="${MMPROJ_PATH:-$PROJECT_DIR/models/GLM-4.6V-Flash-GGUF/mmproj-F16.g
 # Server settings
 HOST="${HOST:-0.0.0.0}"
 PORT="${PORT:-8000}"
-CTX_SIZE=32768
+CTX_SIZE=128000
 N_GPU_LAYERS=-1
 
 echo "=========================================="
